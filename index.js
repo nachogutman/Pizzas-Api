@@ -1,10 +1,12 @@
 import express from "express";
 import PizzaService from "./src/services/pizzas-services.js";
 import Pizza from "./src/models/pizza.js";
+import cors from "cors";
 
 const app = express();
 const port = 912;
 let svc = new PizzaService();
+app.use(cors());
 app.use(express.json());
 
 app.get("/", async (req, res) => {
@@ -51,22 +53,22 @@ app.post("/insert", async (req, res) => {
 });
 
 app.put("/update", async (req, res) => {
-    try {
-        console.log(req.body.Nombre);
-      let svc2 = new Pizza();
-      let pizzaNew = new svc2.constructor(
-        req.body.Nombre,
-        req.body.LibreGluten,
-        req.body.Importe,
-        req.body.Descripcion,
-        req.body.Id
-      );
-      let update = await svc.update(pizzaNew);
-      res.send(update);
-    } catch (error) {
-      res.send("error");
-    }
-  });
+  try {
+    console.log(req.body.Nombre);
+    let svc2 = new Pizza();
+    let pizzaNew = new svc2.constructor(
+      req.body.Nombre,
+      req.body.LibreGluten,
+      req.body.Importe,
+      req.body.Descripcion,
+      req.body.Id
+    );
+    let update = await svc.update(pizzaNew);
+    res.send(update);
+  } catch (error) {
+    res.send("error");
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

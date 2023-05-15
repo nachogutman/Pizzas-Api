@@ -24,7 +24,7 @@ class PizzaService {
             let result = await pool.request()
                 .input('pId', sql.Int, id)
                 .query('SELECT * FROM Pizzas WHERE id = @pId');
-            returnEntity = result.recordsets;
+            returnEntity = result.recordsets[0][0]
         } catch (error) {
             console.log(error);
         }

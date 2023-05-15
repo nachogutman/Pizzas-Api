@@ -1,0 +1,17 @@
+#title{
+    text-align: center;
+    font-size: 100px;
+}
+
+#back{
+    display: none;
+    margin:  -1% auto 1% auto;  
+    width: 30%;
+}
+
+.function{
+    display: inline-block;
+    margin: 3% auto 1% auto;
+    padding: 1%;
+    background-color: grey;
+}
