@@ -1,4 +1,4 @@
-import PizzaService from "./src/services/pizzas-services.js";
+import PizzaService from "../src/services/pizzas-services.js";
 
 var svc = new PizzaService;
 

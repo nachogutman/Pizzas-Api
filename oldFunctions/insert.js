@@ -1,5 +1,5 @@
-import PizzaService from "./src/services/pizzas-services.js";
-import Pizza from "./src/models/pizza.js";
+import PizzaService from "../src/services/pizzas-services.js";
+import Pizza from "../src/models/pizza.js";
 
 var svc = new PizzaService;
 let svc2 = new Pizza;

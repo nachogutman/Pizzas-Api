@@ -8,8 +8,9 @@ const port = 912;
 let svc = new PizzaService();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
-app.get("/", async (req, res) => {
+app.get("/API", async (req, res) => {
   try {
     let GetAll = await svc.getAll();
     res.send(GetAll);

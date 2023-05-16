@@ -34,7 +34,7 @@ function getAll(){
         const { Id, Nombre, LibreGluten, Importe, Descripcion } = pizza;
 
         document.querySelector(".lista").innerHTML += `
-            <li class="card col-sm-4 col-sm-push-4 m-3" style="width: 18rem;">
+            <li class="card col-lg-4 col-push-4 m-3" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">${Nombre}</h5>
                     <p class="card-text"> Libre de Gluten: ${LibreGluten}, Importe: ${Importe}, Descripcion: ${Descripcion} </p>
@@ -55,11 +55,12 @@ function getById(){
     hide();
 
     const id = document.getElementById('idSelectorGet').value;
+    
     axios
     .get(`http://localhost:912/getById/${id}`)
     .then((result) => {
-        
-      pizza = result.data[0][0];
+      console.log(result.data);
+      pizza = result.data;
       const { Id, Nombre, LibreGluten, Importe, Descripcion } = pizza;
       document.querySelector(".lista").innerHTML += `
             <center>
