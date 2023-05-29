@@ -39,13 +39,13 @@ app.delete("/api/pizzas/:id", async (req, res) => {
 
 app.post("/api/pizzas", async (req, res) => {
   try {
-    console.log(req.body.nombre);
+    console.log(req.body);
     let svc2 = new Pizza();
     let pizzaNew = new svc2.constructor(
-      req.body.nombre,
-      req.body.libregluten,
-      req.body.importe,
-      req.body.descripcion
+      req.body.Nombre,
+      req.body.Libregluten,
+      req.body.Importe,
+      req.body.Descripcion
     );
     let Insert = await svc.insert(pizzaNew);
     res.send(Insert);
