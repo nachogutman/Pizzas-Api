@@ -1,18 +1,23 @@
 import express from "express";
 import PizzaService from "./src/services/pizzas-services.js";
 import Pizza from "./src/models/pizza.js";
+import Ingrediente from "./src/models/ingrediente.js";
+import IngredienteService from "./src/services/ingredientes-services.js";
 import cors from "cors";
+import IngredienteXPizzaService from "./src/services/ingredientesXpizzas-services.js";
 
 const app = express();
-const port = 912;
-let svc = new PizzaService();
+const port = 5000;
+let svcPizza = new PizzaService();
+let svcIngre = new IngredienteService();
+let svcJoin = new IngredienteXPizzaService();
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
 app.get("/api/pizzas", async (req, res) => {
   try {
-    let GetAll = await svc.getAll();
+    let GetAll = await svcPizza.getAll();
     res.send(GetAll);
   } catch (error) {
     res.send("error");
@@ -21,7 +26,7 @@ app.get("/api/pizzas", async (req, res) => {
 
 app.get("/api/pizzas/:id", async (req, res) => {
   try {
-    let GetById = await svc.getById(req.params.id);
+    let GetById = await svcPizza.getById(req.params.id);
     res.send(GetById);
   } catch (error) {
     res.send("error");
@@ -30,7 +35,7 @@ app.get("/api/pizzas/:id", async (req, res) => {
 
 app.delete("/api/pizzas/:id", async (req, res) => {
   try {
-    let deleteById = await svc.deleteById(req.params.id);
+    let deleteById = await svcPizza.deleteById(req.params.id);
     res.send(deleteById);
   } catch (error) {
     res.send("error");
@@ -47,7 +52,7 @@ app.post("/api/pizzas", async (req, res) => {
       req.body.Importe,
       req.body.Descripcion
     );
-    let Insert = await svc.insert(pizzaNew);
+    let Insert = await svcPizza.insert(pizzaNew);
     res.send(Insert);
   } catch (error) {
     res.send("error");
@@ -65,8 +70,86 @@ app.put("/api/pizzas/:id", async (req, res) => {
       req.body.Descripcion,
       req.body.Id
     );
-    let update = await svc.update(pizzaNew);
+    let update = await svcPizza.update(pizzaNew);
     res.send(update);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+//INGREDIENTES
+
+app.get("/api/ingredientes", async (req, res) => {
+  try {
+    let GetAll = await svcIngre.getAll();
+    res.send(GetAll);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.get("/api/ingredientes/:id", async (req, res) => {
+  try {
+    let GetById = await svcIngre.getById(req.params.id);
+    res.send(GetById);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.delete("/api/ingredientes/:id", async (req, res) => {
+  try {
+    let deleteById = await svcIngre.deleteById(req.params.id);
+    res.send(deleteById);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.post("/api/ingredientes", async (req, res) => {
+  try {
+    console.log(req.body);
+    let svc2 = new Ingrediente();
+    let ingreNew = new svc2.constructor(
+      req.body.Nombre,
+    );
+    let Insert = await svcIngre.insertIngredientes(ingreNew);
+    res.send(Insert);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.put("/api/ingredientes/:id", async (req, res) => {
+  try {
+    console.log(req.body.Nombre);
+    let svc2 = new Ingrediente();
+    let ingreNew = new svc2.constructor(
+      req.body.Nombre,
+      req.body.Id
+    );
+    let update = await svcIngre.update(ingreNew);
+    res.send(update);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+//INGREDIENTESXPIZZA
+
+app.get("/api/ingredientesXpizzas", async (req, res) => {
+  try {
+    let GetAll = await svcJoin.getAll();
+    res.send(GetAll);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.get("/api/ingredientesXpizzas/:id", async (req, res) => {
+  try {
+    let GetById = await svcJoin.getById(req.params.id);
+    res.send(GetById);
   } catch (error) {
     res.send("error");
   }

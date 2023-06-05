@@ -1,14 +1,14 @@
 USE [master]
 GO
 --
--- Primero hay que creal la base de datos 'DAI-Pizzas'
+-- Primero hay que crear la base de datos 'DAI-Pizzas'
 --
 
 IF NOT EXISTS (SELECT * FROM sys.server_principals WHERE [name] = N'Pizzas')
 BEGIN
 	PRINT 'Creando Login'
 	CREATE LOGIN [Pizzas] WITH 
-		PASSWORD=N'p1zz@s', 
+		PASSWORD=N'VivaLaMuzza123', 
 		DEFAULT_DATABASE=[DAI-Pizzas], 
 		CHECK_EXPIRATION=OFF, 
 		CHECK_POLICY=OFF
