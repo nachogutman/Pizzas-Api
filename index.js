@@ -5,12 +5,14 @@ import Ingrediente from "./src/models/ingrediente.js";
 import IngredienteService from "./src/services/ingredientes-services.js";
 import cors from "cors";
 import IngredienteXPizzaService from "./src/services/ingredientesXpizzas-services.js";
+import UnidadService from "./src/services/unidades-services.js";
 
 const app = express();
 const port = 5000;
 let svcPizza = new PizzaService();
 let svcIngre = new IngredienteService();
 let svcJoin = new IngredienteXPizzaService();
+let svcUni = new UnidadService();
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
@@ -149,6 +151,26 @@ app.get("/api/ingredientesXpizzas", async (req, res) => {
 app.get("/api/ingredientesXpizzas/:id", async (req, res) => {
   try {
     let GetById = await svcJoin.getById(req.params.id);
+    res.send(GetById);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+//UNIDADES
+
+app.get("/api/unidades", async (req, res) => {
+  try {
+    let GetAll = await svcUni.getAll();
+    res.send(GetAll);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+app.get("/api/unidades/:id", async (req, res) => {
+  try {
+    let GetById = await svcUni.getById(req.params.id);
     res.send(GetById);
   } catch (error) {
     res.send("error");
