@@ -1,12 +1,10 @@
 import config from '../../dbconfig.js';
 import sql from 'mssql';
-import Pizza from '../models/pizza.js';
-import Ingrediente from '../models/ingrediente.js';
+import Escribir from '../modules/log-helper.js';
 
 class PizzaService {
     getAll = async () => {
         let returnEntity = null;
-        console.log('Estoy en: PizzaService.GetAll');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -14,12 +12,12 @@ class PizzaService {
             returnEntity = result.recordsets;
         } catch (error) {
             console.log(error);
+            Escribir(error);
         }
         return returnEntity;
     }
     getById = async (id) => {
         let returnEntity = null;
-        console.log('Estoy en: PizzaService.GetById(id)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -33,7 +31,6 @@ class PizzaService {
     }
     insert = async (pizza) => {
         let rowsAffected = 0;
-        console.log(pizza);
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -50,7 +47,6 @@ class PizzaService {
     }
     update = async (pizza) => {
         let rowsAffected = 0;
-        console.log(pizza);
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()

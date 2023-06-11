@@ -1,0 +1,5 @@
+    ConnectionError: Failed to connect to A-PHZ2-LUM-18:1433 - getaddrinfo ENOTFOUND A-PHZ2-LUM-18 
+    ConnectionError: Failed to connect to LANAVE/SQLEXPRESS:1433 - getaddrinfo ENOTFOUND LANAVE/SQLEXPRESS 
+    ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
+    ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
+    ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
