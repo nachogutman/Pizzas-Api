@@ -1,21 +1,27 @@
 import express from "express";
-import PizzaService from "./src/services/pizzas-services.js";
+
 import Pizza from "./src/models/pizza.js";
 import Ingrediente from "./src/models/ingrediente.js";
+
+import PizzaService from "./src/services/pizzas-services.js";
 import IngredienteService from "./src/services/ingredientes-services.js";
-import cors from "cors";
 import IngredienteXPizzaService from "./src/services/ingredientesXpizzas-services.js";
 import UnidadService from "./src/services/unidades-services.js";
 
+import router from "./src/controllers/pizzasController.js";
+import cors from "cors";
+
 const app = express();
 const port = 5000;
+
 let svcPizza = new PizzaService();
 let svcIngre = new IngredienteService();
 let svcJoin = new IngredienteXPizzaService();
 let svcUni = new UnidadService();
+
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use("/api/pizzas", router);
 
 app.get("/api/pizzas", async (req, res) => {
   try {

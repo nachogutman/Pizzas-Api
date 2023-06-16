@@ -3,3 +3,10 @@
     ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
     ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
     ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
+    ConnectionError: Failed to connect to LA-NAVE/SQLEXPRESS:1433 - getaddrinfo ENOTFOUND LA-NAVE/SQLEXPRESS 
+    ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
+    ConnectionError: Failed to connect to LA-NAVE\SQLEXPRESS in 15000ms 
+    ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
+    ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
+    ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
+    ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
