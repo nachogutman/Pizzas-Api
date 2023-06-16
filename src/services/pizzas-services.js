@@ -18,6 +18,8 @@ class PizzaService {
     }
     getById = async (id) => {
         let returnEntity = null;
+        let ingredientes = null;
+
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -27,7 +29,24 @@ class PizzaService {
         } catch (error) {
             console.log(error);
         }
-        return returnEntity;
+
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query(`SELECT Ingredientes.Nombre from IngredientesXPizzas
+                inner join Ingredientes on Ingredientes.Id = IngredientesXPizzas.IdIngrediente
+                where IngredientesXPizzas.IdPizza = 2`);
+            ingredientes = result.recordsets
+        } catch (error) {
+            console.log(error);
+        }
+
+        var result = [returnEntity];
+        ingredientes.map((ingre) => {
+            result.push(ingre);
+        });
+        return result;
     }
     insert = async (pizza) => {
         let rowsAffected = 0;
