@@ -1,6 +1,6 @@
 USE [DAI-Pizzas]
 GO
-/****** Object:  Table [dbo].[Ingredientes]    Script Date: 5/28/2023 10:40:52 PM ******/
+/****** Object:  Table [dbo].[Ingredientes]    Script Date: 6/25/2023 11:50:30 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[Ingredientes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[IngredientesXPizzas]    Script Date: 5/28/2023 10:40:52 PM ******/
+/****** Object:  Table [dbo].[IngredientesXPizzas]    Script Date: 6/25/2023 11:50:30 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -31,7 +31,7 @@ CREATE TABLE [dbo].[IngredientesXPizzas](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Pizzas]    Script Date: 5/28/2023 10:40:52 PM ******/
+/****** Object:  Table [dbo].[Pizzas]    Script Date: 6/25/2023 11:50:30 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -48,7 +48,7 @@ CREATE TABLE [dbo].[Pizzas](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Unidades]    Script Date: 5/28/2023 10:40:52 PM ******/
+/****** Object:  Table [dbo].[Unidades]    Script Date: 6/25/2023 11:50:30 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -57,6 +57,25 @@ CREATE TABLE [dbo].[Unidades](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](150) NOT NULL,
  CONSTRAINT [PK_Unidades] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 6/25/2023 11:50:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuarios](
+	[Id] [int] NOT NULL,
+	[Apellido] [varchar](50) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Token] [varchar](64) NULL,
+	[TokenExpirationDate] [datetime] NULL,
+ CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -151,6 +170,74 @@ GO
 INSERT [dbo].[Unidades] ([Id], [Nombre]) VALUES (3, N'Litros')
 GO
 SET IDENTITY_INSERT [dbo].[Unidades] OFF
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (1, N'Angel', N'Agustina Yael', N'Angel', N'Shaggy', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (2, N'Avola', N'Tomas Agustin', N'Avola', N'Tavo', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (3, N'Bolan', N'Rocco', N'Bolan', N'Freddie', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (4, N'Caceres Smoler', N'Mariano', N'Caceres', N'Howie', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (5, N'Cembal', N'Micaela Yael', N'Cembal', N'Rhythm', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (6, N'Chediex Viner', N'Gabriel', N'Chediex', N'Sabbie', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (7, N'Coladonato', N'Tiago', N'Coladonato', N'KoTi', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (8, N'Forni', N'Tomás Marcos', N'Forni', N'Toddy', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (9, N'Golonbek', N'Matias', N'Golonbek', N'Helios', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (10, N'Gomboc', N'Federico Uriel', N'Gomboc', N'Darwin', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (11, N'Gutman', N'Ignacio', N'Gutman', N'Gucci', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (12, N'Israel', N'Martin', N'Israel', N'MarTeens', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (13, N'Jusid', N'Shirly', N'Jusid', N'Nnyimba', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (14, N'Kujawski', N'Alex Tobias', N'Kujawski', N'Gengis', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (15, N'Kwiatkowski', N'Ivan', N'Kwiatkowski', N'Ninja', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (16, N'Larrain', N'Juan Bautista', N'Larrain', N'Drizzle', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (17, N'Lasorsa Nikcevich', N'Valentin Julian', N'Lasorsa', N'AirMax', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (18, N'Lazzari', N'Santino', N'Lazzari', N'UpnGo', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (19, N'Leybuscchoff', N'Santiago', N'Leybuscchoff', N'Leibupirac', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (20, N'Liponetzky', N'Facundo Ezequiel', N'Liponetzky', N'Lollipop', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (21, N'Makishi', N'Matias Javier', N'Makishi', N'Makiwara', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (22, N'Muguelar', N'Mateo', N'Muguelar', N'Muggle', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (23, N'Naiman Zetel', N'Matias', N'Naiman Zetel', N'Rocky', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (24, N'Neiman', N'Luciano Agustin', N'Neiman', N'Freddo', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (25, N'Pascual', N'Santiago Federico', N'Pascual', N'Mister', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (26, N'Polonsky', N'Tomas', N'Polonsky', N'Tango', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (27, N'Quindi', N'Brian', N'Quindi', N'Party', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (28, N'Raiter', N'Maia', N'Raiter', N'QueenBee', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (29, N'Rempel', N'Tomas Franco', N'Rempel', N'Drinky', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (30, N'Salip', N'Ignacio', N'Salip', N'Facha', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (31, N'Schulman', N'Guido', N'Schulman', N'Yummy', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (32, N'Schwarzberg', N'Octavio Leo', N'Schwarzberg', N'HexaTiger', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (33, N'Vaisberg', N'Facundo', N'Vaisberg', N'Faavs', NULL, NULL)
+GO
+INSERT [dbo].[Usuarios] ([Id], [Apellido], [Nombre], [UserName], [Password], [Token], [TokenExpirationDate]) VALUES (35, N'Ulman', N'Pablo', N'Pablo', N'BolasTristes', N'c4d17feb-1786-4a04-b2e8-c717225e6602', CAST(N'2023-06-26T02:56:56.160' AS DateTime))
 GO
 ALTER TABLE [dbo].[IngredientesXPizzas]  WITH CHECK ADD  CONSTRAINT [FK_IngredientesXPizzas_Ingredientes] FOREIGN KEY([IdIngrediente])
 REFERENCES [dbo].[Ingredientes] ([Id])
