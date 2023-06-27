@@ -10,3 +10,6 @@
     ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
     ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
     ConnectionError: Error de inicio de sesión del usuario 'Pizzas'. 
+    ConnectionError: Login failed for user 'Pizzas'. 
+    ConnectionError: Login failed for user 'Pizzas'. 
+    ConnectionError: Login failed for user 'Pizzas'. 
