@@ -31,7 +31,7 @@ router.get('', verificacionLogin, async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', verificacionLogin, async (req, res) => {
     try {
         let GetById = await svcPizza.getById(req.params.id);
         res.send(GetById);
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('', async (req, res) => {
+router.post('', verificacionLogin, async (req, res) => {
     try {
         console.log(req.body);
         let svc2 = new Pizza();
@@ -57,7 +57,7 @@ router.post('', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificacionLogin, async (req, res) => {
     try {
         console.log(req.body.Nombre);
         let svc2 = new Pizza();
@@ -75,7 +75,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificacionLogin , async (req, res) => {
     try {
         let deleteById = await svcPizza.deleteById(req.params.id);
         res.send(deleteById);
