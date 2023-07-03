@@ -1,11 +1,28 @@
 import { Router } from 'express';
 import PizzaService from '../services/pizzas-services.js';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import UsuarioService from '../services/usuarios-services.js';
 
 const router = Router();
 const svcPizza = new PizzaService();
+const svcUsuarios = new UsuarioService();
 
-router.get('', async (req, res) => {
+const verificacionLogin = async function (req, res, next) {
+    if(req.headers.token != ''){
+        let getByToken = await svcUsuarios.getByToken(req.headers.token);
+        if(getByToken.TokenExpirationDate > new Date()){
+            next();
+        }else{
+            res.send("token expirado");
+        }
+        
+    } else{
+        res.send("no se encontro token, logeate");
+    }
+    
+}
+
+router.get('', verificacionLogin, async (req, res, next) => {
     try {
         let GetAll = await svcPizza.getAll();
         res.send(GetAll);
