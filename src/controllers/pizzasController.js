@@ -13,11 +13,11 @@ const verificacionLogin = async function (req, res, next) {
         if(getByToken.TokenExpirationDate > new Date()){
             next();
         }else{
-            res.send("token expirado");
+            res.send("el token ha expirado");
         }
         
     } else{
-        res.send("no se encontro token, logeate");
+        res.send("no se encontro token, tenes que logearte");
     }
     
 }
@@ -84,4 +84,4 @@ router.delete('/:id', verificacionLogin , async (req, res) => {
     }
 });
 
-export default router;
+export default router; 
